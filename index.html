@@ -10,7 +10,7 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #75CEFF;
+            background-color: #f9f9f9;
         }
         .container {
             max-width: 800px;
@@ -20,12 +20,22 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .question-block {
-            margin-bottom: 30px;
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
         }
         h1 {
             font-size: 24px;
             color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question-block {
+            margin-bottom: 30px;
         }
         p {
             margin: 10px 0;
@@ -33,6 +43,25 @@
         .slider {
             width: 100%;
             margin: 10px 0;
+            height: 10px; /* Increased thickness */
+            background: #ddd;
+            border-radius: 5px;
+            appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #007BFF;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #007BFF;
+            border-radius: 50%;
+            cursor: pointer;
         }
         .slider-labels {
             display: flex;
@@ -64,7 +93,7 @@
             transform: translateY(2px);
         }
         button {
-            background-color: #FF6A00;
+            background-color: #007BFF;
             color: #fff;
             border: none;
             padding: 10px 15px;
@@ -78,7 +107,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Questionnaire</h1>
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <!-- Title -->
+        <h1>What do you think?</h1>
+
         <form>
             <div class="question-block">
                 <p>During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.</p>
@@ -101,17 +137,14 @@
     </div>
     <script>
         function selectAnswer(button) {
-            // Deselect all buttons in the same group
             const siblings = button.parentNode.querySelectorAll('.answer-button');
             siblings.forEach(btn => btn.classList.remove('selected'));
-
-            // Select the clicked button
             button.classList.add('selected');
         }
 
         function handleSubmit(event) {
             event.preventDefault();
-            alert("Form submitted!"); // Replace with logic to process form data
+            alert("Form submitted!"); // Add form submission logic here
         }
     </script>
 </body>
