@@ -126,33 +126,177 @@
 
     <script>
         // Array of questions
-        const questions = [
-            {
-                story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.",
-                question1: "How comfortable do you think Jake feels using the bottle?",
-                sliderLabels: ["not comfortable", "very comfortable"],
-                question2: "What should Jake do?",
-                options: [
-                    "Drink it and throw it away afterward.",
-                    "Look around for the owner before deciding.",
-                    "Leave it where he found it.",
-                    "Take it home as a free item."
-                ]
-            },
-            {
-                story: "Sarah climbs a neighbor’s tree to get a kite that got stuck. The branch breaks, and Sarah falls but isn’t hurt.",
-                question1: "How risky do you think Sarah’s decision was?",
-                sliderLabels: ["not risky", "very risky"],
-                question2: "What should Sarah do?",
-                options: [
-                    "Apologize to the neighbor for climbing the tree.",
-                    "Try to explain why she climbed it.",
-                    "Ignore the situation and hope no one notices.",
-                    "Offer to help to throw away the branch debris."
-                ]
-            },
-            // Add more questions as needed...
-        ];
+       const questions = [
+    {
+        story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.",
+        question1: "How comfortable do you think Jake feels using the bottle?",
+        sliderLabels: ["not comfortable", "very comfortable"],
+        question2: "What should Jake do?",
+        options: [
+            "Drink it and throw it away afterward.",
+            "Look around for the owner before deciding.",
+            "Leave it where he found it.",
+            "Take it home as a free item."
+        ]
+    },
+    {
+        story: "Sarah climbs a neighbor’s tree to get a kite that got stuck. The branch breaks, and Sarah falls but isn’t hurt.",
+        question1: "How risky do you think Sarah’s decision was?",
+        sliderLabels: ["not risky", "very risky"],
+        question2: "What should Sarah do?",
+        options: [
+            "Apologize to the neighbor for climbing the tree.",
+            "Try to explain why she climbed it.",
+            "Ignore the situation and hope no one notices.",
+            "Offer to help to throw away the branch debris."
+        ]
+    },
+    {
+        story: "Emma takes a Lakers branded pencil from a classroom without asking, thinking no one would miss it. Later, a classmate mentions they lost theirs.",
+        question1: "How likely is it that Emma feels guilty?",
+        sliderLabels: ["not guilty", "very guilty"],
+        question2: "What should Emma do?",
+        options: [
+            "Return the pencil anonymously.",
+            "Apologize and return it to the classmate.",
+            "Keep it and hope no one finds out.",
+            "Explain she thought it was free to use."
+        ]
+    },
+    {
+        story: "Michael forgets to bring a signed school form for a field trip and realizes he left it at home.",
+        question1: "How likely is it that Michael’s teacher will allow him to join the trip?",
+        sliderLabels: ["not likely", "very likely"],
+        question2: "What should Michael do?",
+        options: [
+            "Ask his parents to bring the form to school.",
+            "Apologize to the teacher and skip the trip.",
+            "Try to convince the teacher to let him go.",
+            "Say he left the form in his bag and search for it."
+        ]
+    },
+    {
+        story: "During a soccer game, Josh kicks the ball too hard, breaking a car window near the field. The coach asks what happened.",
+        question1: "How nervous do you think Josh feels?",
+        sliderLabels: ["not nervous", "very nervous"],
+        question2: "What should Josh do?",
+        options: [
+            "Apologize and offer to pay for the damage.",
+            "Explain it was an accident.",
+            "Blame the game and say it’s not his fault.",
+            "Wait for someone else to report the incident."
+        ]
+    },
+    {
+        story: "Lisa accidentally posts a funny but unflattering photo of her friend Mia online. Mia hasn’t seen it yet.",
+        question1: "How likely is it that Mia will feel embarrassed when she sees it?",
+        sliderLabels: ["not likely", "very likely"],
+        question2: "What should Lisa do?",
+        options: [
+            "Delete the photo and say nothing.",
+            "Apologize to Mia and delete it immediately.",
+            "Leave it up and hope Mia doesn’t mind.",
+            "Tell Mia it was a harmless joke."
+        ]
+    },
+    {
+        story: "Ethan spends his savings on a video game instead of saving for a bike he’s wanted for months.",
+        question1: "How much do you think Ethan regrets his decision?",
+        sliderLabels: ["not much", "very much"],
+        question2: "What should Ethan do next time?",
+        options: [
+            "Save a portion of his money each week.",
+            "Ask his parents to buy the bike for him.",
+            "Stop saving for big items and enjoy smaller ones.",
+            "Borrow money from a friend for the bike."
+        ]
+    },
+    {
+        story: "During a sleepover, Emily and her friends eat cookies labeled “Mom’s Treats.” They promise to keep it a secret.",
+        question1: "How likely is it that Emily feels guilty about eating the cookies?",
+        sliderLabels: ["not likely", "very likely"],
+        question2: "What should Emily do?",
+        options: [
+            "Apologize to her mom the next day.",
+            "Keep the promise and not say anything.",
+            "Suggest the group admit to eating the cookies.",
+            "Blame someone else if asked."
+        ]
+    },
+    {
+        story: "During a group presentation, Adam hesitates to share his cultural tradition, fearing classmates will laugh.",
+        question1: "How nervous do you think Adam feels about sharing his tradition?",
+        sliderLabels: ["not nervous", "very nervous"],
+        question2: "What should Adam do?",
+        options: [
+            "Share his tradition and ignore any reactions.",
+            "Wait for a different time to share.",
+            "Ask a classmate to present for him.",
+            "Skip the presentation altogether."
+        ]
+    },
+    {
+        story: "During cleanup time, Mia forgets to clean her desk. The teacher points it out, but Mia says, 'It’s not that messy.'",
+        question1: "How frustrated do you think the teacher feels?",
+        sliderLabels: ["not frustrated", "very frustrated"],
+        question2: "What should Mia do?",
+        options: [
+            "Clean her desk immediately.",
+            "Explain why she doesn’t think it’s messy.",
+            "Ask a friend to clean it for her.",
+            "Ignore the teacher’s comment."
+        ]
+    },
+    {
+        story: "Ethan finds a $20 bill under a park bench. No one is around, and he wonders whether to keep it.",
+        question1: "How likely is it that Ethan keeps the money?",
+        sliderLabels: ["not likely", "very likely"],
+        question2: "What should Ethan do?",
+        options: [
+            "Keep the money since no one is around.",
+            "Look for someone who might have lost it.",
+            "Leave it where he found it.",
+            "Donate it to a charity box."
+        ]
+    },
+    {
+        story: "During dinner, Alex makes a joke about his cousin’s accent. His cousin looks upset but doesn’t say anything.",
+        question1: "How uncomfortable do you think Alex’s cousin feels?",
+        sliderLabels: ["not uncomfortable", "very uncomfortable"],
+        question2: "What should Alex do?",
+        options: [
+            "Apologize privately to his cousin.",
+            "Say the joke wasn’t serious.",
+            "Avoid making jokes in the future.",
+            "Ignore his cousin’s reaction."
+        ]
+    },
+    {
+        story: "Mia borrows a bike from her neighbor. When she returns it, she doesn’t thank him, thinking he won’t mind.",
+        question1: "How likely is it that the neighbor feels unappreciated?",
+        sliderLabels: ["not likely", "very likely"],
+        question2: "What should Mia do next time?",
+        options: [
+            "Thank her neighbor and offer to clean the bike.",
+            "Borrow the bike without saying anything.",
+            "Leave a thank-you note instead of saying it.",
+            "Avoid borrowing from him again."
+        ]
+    },
+    {
+        story: "During a volunteer day, Mia helps clean up the park but forgets to sign her name on the participation sheet. At the end of the day, the organizers thank everyone except her.",
+        question1: "How upset do you think Mia feels about not being recognized?",
+        sliderLabels: ["not upset", "very upset"],
+        question2: "What should Mia do?",
+        options: [
+            "Point out to the organizers that she participated.",
+            "Stay quiet and be proud of her effort.",
+            "Ask someone to mention her contribution.",
+            "Leave and decide not to participate again."
+        ]
+    }
+];
+
 
         let currentQuestionIndex = 0;
 
