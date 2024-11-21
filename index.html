@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accountability Questionnaire</title>
+    <title>What do you think?</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +30,7 @@
         }
         h1 {
             font-size: 24px;
-            color: #033C5A;
+            color: #333;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -43,7 +43,7 @@
         .slider {
             width: 100%;
             margin: 10px 0;
-            height: 10px; /* Increased thickness */
+            height: 10px;
             background: #ddd;
             border-radius: 5px;
             appearance: none;
@@ -52,14 +52,14 @@
             appearance: none;
             width: 20px;
             height: 20px;
-            background: #0063A7;
+            background: #007BFF;
             border-radius: 50%;
             cursor: pointer;
         }
         .slider::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background: #0063A7;
+            background: #007BFF;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -78,7 +78,7 @@
             gap: 10px;
         }
         .answer-button {
-            background-color: #033C5A;
+            background-color: #007BFF;
             color: #fff;
             border: none;
             padding: 10px 15px;
@@ -93,7 +93,7 @@
             transform: translateY(2px);
         }
         button {
-            background-color: #0063A7;
+            background-color: #007BFF;
             color: #fff;
             border: none;
             padding: 10px 15px;
@@ -109,43 +109,94 @@
     <div class="container">
         <!-- Logo Section -->
         <div class="logo">
-            <img src="https://github.com/shaumangmailcom/Maimo/blob/3f981714c95eeb287f287187fe016a3c9d488aa9/logo.png" alt="Logo">
+            <img src="logo.png" alt="Logo">
         </div>
 
         <!-- Title -->
         <h1>What do you think?</h1>
 
-        <form>
-            <div class="question-block">
-                <p>During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.</p>
-                <p><strong>1:</strong> How comfortable do you think Jake feels using the bottle?</p>
-                <input type="range" min="1" max="10" value="5" class="slider">
-                <div class="slider-labels">
-                    <span>not comfortable</span>
-                    <span>very comfortable</span>
-                </div>
-                <p><strong>2:</strong> What should Jake do?</p>
-                <div class="answers">
-                    <button type="button" class="answer-button" onclick="selectAnswer(this)">Drink it and throw it away afterward.</button>
-                    <button type="button" class="answer-button" onclick="selectAnswer(this)">Look around for the owner before deciding.</button>
-                    <button type="button" class="answer-button" onclick="selectAnswer(this)">Leave it where he found it.</button>
-                    <button type="button" class="answer-button" onclick="selectAnswer(this)">Take it home as a free item.</button>
-                </div>
-            </div>
-            <button type="submit" onclick="handleSubmit(event)">Submit</button>
-        </form>
+        <!-- Question Block -->
+        <div id="question-container">
+            <!-- Questions will be injected dynamically -->
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submit-button">Submit</button>
     </div>
+
     <script>
-        function selectAnswer(button) {
-            const siblings = button.parentNode.querySelectorAll('.answer-button');
-            siblings.forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
+        // Array of questions
+        const questions = [
+            {
+                story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.",
+                question1: "How comfortable do you think Jake feels using the bottle?",
+                sliderLabels: ["not comfortable", "very comfortable"],
+                question2: "What should Jake do?",
+                options: [
+                    "Drink it and throw it away afterward.",
+                    "Look around for the owner before deciding.",
+                    "Leave it where he found it.",
+                    "Take it home as a free item."
+                ]
+            },
+            {
+                story: "Sarah climbs a neighbor’s tree to get a kite that got stuck. The branch breaks, and Sarah falls but isn’t hurt.",
+                question1: "How risky do you think Sarah’s decision was?",
+                sliderLabels: ["not risky", "very risky"],
+                question2: "What should Sarah do?",
+                options: [
+                    "Apologize to the neighbor for climbing the tree.",
+                    "Try to explain why she climbed it.",
+                    "Ignore the situation and hope no one notices.",
+                    "Offer to help to throw away the branch debris."
+                ]
+            },
+            // Add more questions as needed...
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion(index) {
+            const questionContainer = document.getElementById("question-container");
+            const question = questions[index];
+
+            questionContainer.innerHTML = `
+                <div class="question-block">
+                    <p>${question.story}</p>
+                    <p><strong>1:</strong> ${question.question1}</p>
+                    <input type="range" min="1" max="10" value="5" class="slider">
+                    <div class="slider-labels">
+                        <span>${question.sliderLabels[0]}</span>
+                        <span>${question.sliderLabels[1]}</span>
+                    </div>
+                    <p><strong>2:</strong> ${question.question2}</p>
+                    <div class="answers">
+                        ${question.options.map(option => `<button type="button" class="answer-button">${option}</button>`).join("")}
+                    </div>
+                </div>
+            `;
+
+            // Add button selection functionality
+            document.querySelectorAll('.answer-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    document.querySelectorAll('.answer-button').forEach(btn => btn.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
         }
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert("Form submitted!"); // Add form submission logic here
-        }
+        document.getElementById("submit-button").addEventListener("click", function () {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                alert("Thank you for completing the questionnaire!");
+                this.disabled = true;
+            }
+        });
+
+        // Load the first question
+        loadQuestion(currentQuestionIndex);
     </script>
 </body>
 </html>
