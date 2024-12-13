@@ -137,11 +137,19 @@
     <script>
         // Array of questions
        const questions = [
-    {
-        story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers drinking it, thinking no one will notice.",
-        question1: "How comfortable do you think Jake feels using the bottle?",
-        sliderLabels: ["not comfortable", "very comfortable"],
-        question2: "What should Jake do?",
+   
+ {
+        story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He considers taking it and drinking it, thinking no one will notice.",
+        question1: "How likely is it that Jake feels guilty about taking the Coke?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Drink it and throw it away afterward.",
+            "Look around for the owner before deciding.",
+            "Leave it where he found it.",
+            "Take it home as a free item."
+        ],
+question3: "What <b>should</b> Jake do?",
         options: [
             "Drink it and throw it away afterward.",
             "Look around for the owner before deciding.",
@@ -150,46 +158,76 @@
         ]
     },
     {
-        story: "Sarah climbs a neighbor’s tree to get a kite that got stuck. The branch breaks, and Sarah falls but isn’t hurt.",
-        question1: "How risky do you think Sarah’s decision was?",
-        sliderLabels: ["not risky", "very risky"],
-        question2: "What should Sarah do?",
+        story: "Sarah’s kite got stuck in the neighbors tree. Sarah climbed the neighbor’s tree to get the kite that got stuck. A big branch broke, and Sarah could hold another branch and did not fall.",
+        question1: "How likely is it that Sarah feels guilty about breaking the branch?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?”,
+        options: [
+            "Apologize to the neighbor for climbing the tree.",
+            "Try to explain why she climbed it.",
+            "Ignore the situation and hope no one notices.",
+            "Offer to help to throw away the branch debris."
+        ],
+ question3: "What <b>should</b> Sarah do?",
         options: [
             "Apologize to the neighbor for climbing the tree.",
             "Try to explain why she climbed it.",
             "Ignore the situation and hope no one notices.",
             "Offer to help to throw away the branch debris."
         ]
+
     },
     {
-        story: "Emma takes a Lakers branded pencil from a classroom without asking, thinking no one would miss it. Later, a classmate mentions they lost theirs.",
-        question1: "How likely is it that Emma feels guilty?",
-        sliderLabels: ["not guilty", "very guilty"],
-        question2: "What should Emma do?",
+        story: "Emma finds a Lakers branded pencil on the floor in her classroom and takes it without asking, thinking no one would miss it. Later, one of her classmates mentioned they lost their Lakers branded pencil.",
+        question1: "How likely is it that Emma feels guilty about taking the Lakers pencil without asking?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
             "Return the pencil anonymously.",
             "Apologize and return it to the classmate.",
             "Keep it and hope no one finds out.",
-            "Explain she thought it was free to use."
-        ]
-    },
-    {
-        story: "Michael forgets to bring a signed school form for a field trip and realizes he left it at home.",
-        question1: "How likely is it that Michael’s teacher will allow him to join the trip?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Michael do?",
+            "Explain that she thought it was free to use."
+        ],
+ question3: "What <b>should</b> Emma do?",
         options: [
-            "Ask his parents to bring the form to school.",
-            "Apologize to the teacher and skip the trip.",
-            "Try to convince the teacher to let him go.",
-            "Say he left the form in his bag and search for it."
+            "Return the pencil anonymously.",
+            "Apologize and return it to the classmate.",
+            "Keep it and hope no one finds out.",
+            "Explain that she thought it was free to use."
         ]
     },
     {
-        story: "During a soccer game, Josh kicks the ball too hard, breaking a car window near the field. The coach asks what happened.",
-        question1: "How nervous do you think Josh feels?",
-        sliderLabels: ["not nervous", "very nervous"],
-        question2: "What <b>should</b> Josh do?",
+        story: "Michael forgets to bring a signed school form for a field trip and realizes he left it at home. Michael forges his parent’s signature",
+        question1: "How likely is it that Michael feels guilty about forging his parents signature?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Apologize to the teacher and miss the trip.",
+            "Ask his parents to call the teacher and sort it out.",
+            "Try to convince the teacher to forgive him and let him go to the trip.",
+            "Blame his parents for not signing the form and putting it in his bag."
+        ],
+ question3: "What <b>should</b> Michael do?",
+        options: [
+            "Apologize to the teacher and miss the trip.",
+            "Ask his parents to call the teacher and sort it out.",
+            "Try to convince the teacher to forgive him and let him go to the trip.",
+            "Blame his parents for not signing the form and putting it in his bag."
+        ]
+
+    },
+    {
+        story: "During a baseball game, Josh hits the ball very hard, breaking a car window near the field. The coach asks what happened.",
+        question1: "How likely is it that Josh feels guilty about breaking the car window?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Apologize and offer to pay for the damage.",
+            "Explain it was an accident.",
+            "Blame the game and say it’s not his fault.",
+            "Wait for someone else to report the incident."
+        ],
+        question3: "What <b>should</b> Josh do?",
         options: [
             "Apologize and offer to pay for the damage.",
             "Explain it was an accident.",
@@ -198,70 +236,115 @@
         ]
     },
     {
-        story: "Lisa accidentally posts a funny but unflattering photo of her friend Mia online. Mia hasn’t seen it yet.",
-        question1: "How likely is it that Mia will feel embarrassed when she sees it?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Lisa do?",
+        story: "Lisa accidentally posts a funny but unflattering photo of her friend Mia online. When Mia saw it, she was very upset.",
+        question1: "How likely is it that Lisa feels guilty about posting the photo?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
             "Delete the photo and say nothing.",
             "Apologize to Mia and delete it immediately.",
-            "Leave it up and hope Mia doesn’t mind.",
+           "Leave it up and hope Mia will forget about it at some point.",
+            "Tell Mia it was a harmless joke."
+        ],
+        question3: "What <b>should</b> Lisa do?",
+        options: [
+            "Delete the photo and say nothing.",
+            "Apologize to Mia and delete it immediately.",
+            "Leave it up and hope Mia will forget about it at some point.",
             "Tell Mia it was a harmless joke."
         ]
     },
     {
         story: "Ethan spends his savings on a video game instead of saving for a bike he’s wanted for months.",
-        question1: "How much do you think Ethan regrets his decision?",
-        sliderLabels: ["not much", "very much"],
-        question2: "What should Ethan do next time?",
+        question1: "How likely is it that Ethan feels guilty about his decision?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
-            "Save a portion of his money each week.",
+            "Save more money each week.",
             "Ask his parents to buy the bike for him.",
-            "Stop saving for big items and enjoy smaller ones.",
+            "Give up on buying a bike.",
+            "Borrow money from a friend for the bike."
+        ],
+ question3: "What <b>should</b> Ethan do?",
+        options: [
+            "Save more money each week.",
+            "Ask his parents to buy the bike for him.",
+            "Give up on buying a bike.",
             "Borrow money from a friend for the bike."
         ]
+
     },
     {
         story: "During a sleepover, Emily and her friends eat cookies labeled “Mom’s Treats.” They promise to keep it a secret.",
         question1: "How likely is it that Emily feels guilty about eating the cookies?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Emily do?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Apologize to her mom the next day.",
+            "Keep the promise and not say anything.",
+            "Suggest the group admit to eating the cookies.",
+            "Blame someone else if asked."
+        ],
+question3: "What <b>should</b> Emily do?",
         options: [
             "Apologize to her mom the next day.",
             "Keep the promise and not say anything.",
             "Suggest the group admit to eating the cookies.",
             "Blame someone else if asked."
         ]
+
     },
     {
-        story: "During a group presentation, Adam hesitates to share his cultural tradition, fearing classmates will laugh.",
-        question1: "How nervous do you think Adam feels about sharing his tradition?",
-        sliderLabels: ["not nervous", "very nervous"],
-        question2: "What should Adam do?",
+        story: "During a group presentation, Adam hesitates to share his cultural tradition, fearing his classmates might laugh at him, so he pretends to be sick and did not participate.",
+        question1: "How likely is it that Adam feels guilty about not sharing his tradition?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
             "Share his tradition and ignore any reactions.",
             "Wait for a different time to share.",
             "Ask a classmate to present for him.",
             "Skip the presentation altogether."
-        ]
+        ],
+question3: "What <b>should</b> Adam do?",
+        options: [
+            "Share his tradition and ignore any reactions.",
+            "Wait for a different time to share.",
+            "Ask a classmate to present for him.",
+            "Skip the presentation altogether."
+ ]
     },
     {
         story: "During cleanup time, Mia forgets to clean her desk. The teacher points it out, but Mia says, 'It’s not that messy.'",
-        question1: "How frustrated do you think the teacher feels?",
-        sliderLabels: ["not frustrated", "very frustrated"],
-        question2: "What should Mia do?",
+        question1: "How likely is it that Mia feels guilty for not cleaning her desk?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Clean her desk immediately.",
+            "Explain why she doesn’t think it’s messy.",
+            "Ask a friend to clean it for her.",
+            "Ignore the teacher’s comment."
+        ],
+question3: "What <b>should</b> Mia do?",
         options: [
             "Clean her desk immediately.",
             "Explain why she doesn’t think it’s messy.",
             "Ask a friend to clean it for her.",
             "Ignore the teacher’s comment."
         ]
+
     },
     {
-        story: "Ethan finds a $20 bill under a park bench. No one is around, and he wonders whether to keep it.",
-        question1: "How likely is it that Ethan keeps the money?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Ethan do?",
+        story: "Ethan finds a $20 bill under a park bench. No one is around, and he considers keeping it.",
+        question1: "How likely is it that Ethan feels guilty for considering keeping the money?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Keep the money since no one is around.",
+            "Look for someone who might have lost it.",
+            "Leave it where he found it.",
+            "Donate it to a charity box."
+        ],
+question3: "What <b>should</b> Ethan do?",
         options: [
             "Keep the money since no one is around.",
             "Look for someone who might have lost it.",
@@ -271,9 +354,16 @@
     },
     {
         story: "During dinner, Alex makes a joke about his cousin’s accent. His cousin looks upset but doesn’t say anything.",
-        question1: "How uncomfortable do you think Alex’s cousin feels?",
-        sliderLabels: ["not uncomfortable", "very uncomfortable"],
-        question2: "What should Alex do?",
+        question1: "How likely is it that Alex feels guilty for making a joke about his cousin’s accent?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Apologize privately to his cousin.",
+            "Say the joke wasn’t serious.",
+            "Avoid making jokes in the future.",
+            "Ignore his cousin’s reaction."
+        ],
+question3: "What <b>should</b> Alex do?",
         options: [
             "Apologize privately to his cousin.",
             "Say the joke wasn’t serious.",
@@ -281,102 +371,100 @@
             "Ignore his cousin’s reaction."
         ]
     },
-    {
-        story: "Mia borrows a bike from her neighbor. When she returns it, she doesn’t thank him, thinking he won’t mind.",
-        question1: "How likely is it that the neighbor feels unappreciated?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Mia do next time?",
-        options: [
-            "Thank her neighbor and offer to clean the bike.",
-            "Borrow the bike without saying anything.",
-            "Leave a thank-you note instead of saying it.",
-            "Avoid borrowing from him again."
-        ]
-    },
-    {
-        story: "During a volunteer day, Mia helps clean up the park but forgets to sign her name on the participation sheet. At the end of the day, the organizers thank everyone except her.",
-        question1: "How upset do you think Mia feels about not being recognized?",
-        sliderLabels: ["not upset", "very upset"],
-        question2: "What should Mia do?",
-        options: [
-            "Point out to the organizers that she participated.",
-            "Stay quiet and be proud of her effort.",
-            "Ask someone to mention her contribution.",
-            "Leave and decide not to participate again."
-        ]
-    },
-      {
+           {
         story: "While hanging out in the backyard, Ethan and his friends accidentally break the handle of the neighbor’s gate. They decide not to tell anyone.",
-        question1: "How likely is it that the neighbor will notice the broken handle?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Ethan suggest to the group?",
+        question1: "How likely is it that Ethan feels guilty for breaking the handle?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
             "Tell the neighbor and offer to fix it.",
             "Leave the scene and hope no one finds out.",
             "Blame the damage on the wind.",
-            "Apologize but let the group decide what to do."
+            "Blame his friends for breaking the handle."
+        ],
+ question3: "What <b>should</b> Ethan do?",
+        options: [
+            "Tell the neighbor and offer to fix it.",
+            "Leave the scene and hope no one finds out.",
+            "Blame the damage on the wind.",
+            "Blame his friends for breaking the handle."
         ]
+
     },
     {
-        story: "During a school trip to a museum, Sarah finds a souvenir pin on the floor of the gift shop. No one is looking, and she debates whether to keep it.",
-        question1: "How guilty do you think Sarah feels about keeping the pin?",
-        sliderLabels: ["not guilty", "very guilty"],
-        question2: "What should Sarah do?",
+        story: "During a school trip to a museum, Sarah finds a souvenir pin on the floor of the gift shop. No one is looking, and she decides to keep it.",
+        question1: "How likely is it that Sarah feels guilty about keeping the pin?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What <b>should</b> Sarah do?",
         options: [
             "Keep the pin as a free souvenir.",
-            "Leave it on the floor where she found it.",
+            "Put it back on the floor where she found it.",
             "Give it to the shop clerk in case someone asks.",
             "Try to find the person who dropped it."
         ]
     },
+  
     {
-        story: "During a cooking competition, Josh accidentally burns a pot of pasta but doesn’t tell his team. When the teacher notices, no one takes responsibility.",
-        question1: "How likely is it that Josh’s team feels frustrated about the situation?",
-        sliderLabels: ["not likely", "very likely"],
-        question2: "What should Josh do?",
+        story: "While setting up decorations for a party, Alex insists he can hang a large banner by himself. He accidentally tears it while trying.",
+        question1: "How likely is it that Alex feels guilty about tearing the banner?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
         options: [
-            "Admit his mistake and apologize.",
-            "Say nothing and hope the teacher forgets.",
-            "Suggest the team starts over without admitting fault.",
-            "Blame the equipment for the burnt pasta."
-        ]
-    },
-    {
-        story: "While setting up decorations for a party, Alex insists he can hang a large banner by himself. He accidentally tears it while trying, but doesn’t want to ask for help.",
-        question1: "How frustrated do you think Alex feels about tearing the banner?",
-        sliderLabels: ["not frustrated", "very frustrated"],
-        question2: "What should Alex do?",
+            "Apologize to the group and ask for help.",
+            "Fix the banner quickly and say nothing.",
+            "Explain that the banner was poorly made.",
+            "Suggest they skip using the banner altogether."
+        ],
+  question3: "What <b>should</b> Alex do?",
         options: [
             "Apologize to the group and ask for help.",
             "Fix the banner quickly and say nothing.",
             "Explain that the banner was poorly made.",
             "Suggest they skip using the banner altogether."
         ]
+
     },
     {
-        story: "During a talent show, Emma forgets part of her dance routine. She freezes on stage while the audience waits for her to continue.",
-        question1: "How nervous do you think Emma feels in front of the audience?",
-        sliderLabels: ["not nervous", "very nervous"],
-        question2: "What should Emma do?",
-        options: [
-            "Improvise a new move and finish the dance.",
-            "Apologize to the audience and leave the stage.",
-            "Start the routine over from the beginning.",
-            "Stand still until the music ends."
-        ]
+        story: "During a talent show, Emma forgets part of her dance routine. She improvises a new move and finishes the dance.",
+question1: "How likely is it that Emma feels guilty about improvising a new move?",
+sliderLabels: ["Not likely", "Very likely"],
+question2: "What do you think most students at your school do?",
+options: [
+    "Tell everyone that this was the original plan",
+    "Apologize to the audience and leave the stage",
+    "Apologize to the audience and start the routine over from the beginning",
+    "Blame her teacher for not training her enough"
+],
+question3: "What <b>should</b> Emma do?",
+options: [
+    "Tell everyone that this was the original plan",
+    "Apologize to the audience and leave the stage",
+    "Apologize to the audience and start the routine over from the beginning",
+    "Blame her teacher for not training her enough"
+]
+
     },
     {
         story: "During a group hike, Lisa accidentally steps on another hiker’s water bottle and cracks it. She’s unsure if the owner noticed.",
-        question1: "How guilty do you think Lisa feels about damaging the bottle?",
-        sliderLabels: ["not guilty", "very guilty"],
-        question2: "What should Lisa do?",
+        question1: "How likely is it that Lisa feels guilty about damaging the bottle?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students at your school do?",
+        options: [
+            "Apologize to the hiker and offer to replace the bottle.",
+            "Say nothing and keep walking.",
+            "Blame the crowded trail for the accident.",
+            "Offer to share her water for the rest of the hike."
+        ],
+  question3: "What <b>should</b> Lisa do?",
         options: [
             "Apologize to the hiker and offer to replace the bottle.",
             "Say nothing and keep walking.",
             "Blame the crowded trail for the accident.",
             "Offer to share her water for the rest of the hike."
         ]
+
     }     
+
 ];
 
 
