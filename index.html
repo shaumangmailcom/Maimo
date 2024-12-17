@@ -104,6 +104,30 @@
         button:hover {
             background-color: #0056b3;
         }
+        .progress-bar-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 20px;
+    width: 0%; /* Starts at 0% */
+    background-color: #007BFF;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.question-number {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
     </style>
 </head>
 <body>
@@ -112,6 +136,11 @@
             <img src="logo.png" alt="Logo">
         </div>
         <h1>What do you think?</h1>
+        <!-- Progress Bar -->
+<div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+
         <div id="question-container"></div>
         <button id="submit-button">Next question</button>
     </div>
@@ -479,6 +508,23 @@ options3: [
                     </div>
                 </div>`;
             addButtonListeners();
+
+            // Update Progress Bar
+const progressBar = document.getElementById("progress-bar");
+const progress = ((index + 1) / questions.length) * 100;
+progressBar.style.width = `${progress}%`;
+
+// Display Question Number
+const questionContainer = document.getElementById("question-container");
+const questionNumberHTML = `
+    <div class="question-number">
+        Question ${index + 1} of ${questions.length}
+    </div>
+`;
+questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
+
+        
+        
         }
 
         function addButtonListeners() {
