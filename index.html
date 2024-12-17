@@ -133,7 +133,7 @@
 </head>
 <body>
 
-    <!-- Intro Page -->
+   <!-- Intro Page -->
 <div id="intro-page" class="container">
     <div class="logo">
         <img src="logo.png" alt="Logo">
@@ -149,28 +149,32 @@
     <button id="start-button">Start</button>
 </div>
 
-    
-    <div class="container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <h1>What do you think?</h1>
-        <!-- Progress Bar -->
-<div class="progress-bar-container">
-    <div class="progress-bar" id="progress-bar"></div>
-</div>
-
-        <div id="question-container"></div>
-        <button id="submit-button">Next question</button>
+<!-- Main Questionnaire Section -->
+<div id="questionnaire-page" class="container" style="display: none;">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
     </div>
+    <h1>What do you think?</h1>
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div id="question-container"></div>
+    <button id="submit-button">Next question</button>
+</div>
 
     <script>
 
-        document.getElementById("start-button").addEventListener("click", function () {
-    document.getElementById("intro-page").style.display = "none"; // Hide the intro page
-    document.querySelector(".container").style.display = "block"; // Show the main questionnaire
-    loadQuestion(currentQuestionIndex); // Load the first question
+document.getElementById("start-button").addEventListener("click", function () {
+    // Hide the intro page
+    document.getElementById("intro-page").style.display = "none";
+
+    // Show the main questionnaire page
+    document.getElementById("questionnaire-page").style.display = "block";
+
+    // Load the first question
+    loadQuestion(currentQuestionIndex);
 });
+
 
         const questions = [
           {
