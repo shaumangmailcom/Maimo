@@ -203,399 +203,16 @@ button:hover {
 </div>
 
 
-    <script>
-
-document.getElementById("start-button").addEventListener("click", function () {
-    const fullName = document.getElementById("full-name").value.trim();
-    const className = document.getElementById("class-name").value.trim();
-
-    if (fullName === "" || className === "") {
-        alert("Please fill out both your Full Name and Class before starting.");
-        return;
-    }
-
-    // Hide the intro page
-    document.getElementById("intro-page").style.display = "none";
-
-    // Show the main questionnaire page
-    document.getElementById("questionnaire-page").style.display = "block";
-
-    // Store the name and class if needed later
-    localStorage.setItem("fullName", fullName);
-    localStorage.setItem("className", className);
-
-    // Load the first question
-    loadQuestion(currentQuestionIndex);
-});
 
 
-        const questions = [
-          {
-        story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He is taking it and drinking it, thinking no one will notice.",
-        question1: "How likely is it that Jake feels guilty about taking the Coke?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Drink it and throw it away afterward.",
-            "Look around for the owner before deciding.",
-            "Leave it where he found it.",
-            "Take it home as a free item."
-        ],
-        question3: "What <b>should</b> Jake do?",
-        options3: [
-            "Drink it and throw it away afterward.",
-            "Look around for the owner before deciding.",
-            "Leave it where he found it.",
-            "Take it home as a free item."
-        ]
-    },
-    {
-        story: "Sarah’s kite got stuck in the neighbors tree. Sarah climbed the neighbor’s tree to get the kite that got stuck. A big branch broke, and Sarah could held for another branch and did not fall.",
-        question1: "How likely is it that Sarah feels guilty about breaking the branch?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize to the neighbor for climbing the tree.",
-            "Try to explain why she climbed it.",
-            "Ignore the situation and hope no one notices.",
-            "Offer to help to throw away the branch debris."
-        ],
- question3: "What <b>should</b> Sarah do?",
-        options3: [
-            "Apologize to the neighbor for climbing the tree.",
-            "Try to explain why she climbed it.",
-            "Ignore the situation and hope no one notices.",
-            "Offer to help to throw away the branch debris."
-        ]
-
-    },
-    {
-        story: "Jamie finds a Lakers branded pencil on the fstoryloor in her classroom and takes it, thinking no one would miss it. Later, one of her classmates mentioned they lost their Lakers branded pencil.",
-        question1: "How likely is it that Jamie feels guilty about taking the Lakers pencil?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Return the pencil anonymously.",
-            "Apologize and return it to the classmate.",
-            "Keep it and hope no one finds out.",
-            "Explain that she thought it was free to use."
-        ],
- question3: "What <b>should</b> Jamie do?",
-        options3: [
-            "Return the pencil anonymously.",
-            "Apologize and return it to the classmate.",
-            "Keep it and hope no one finds out.",
-            "Explain that she thought it was free to use."
-        ]
-    },
-    {
-        story: "Michael forgets to bring a signed school form for a field trip, realizes he left it at home. Michael forgets his parent’s signature.",
-        question1: "How likely is it that Michael feels guilty about forgetting his parents signature?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize to the teacher and miss the trip.",
-            "Ask his parents to call the teacher and sort it out.",
-            "Try to convince the teacher to forgive him and let him go to the trip.",
-            "Blame his parents for not signing the form and putting it in his bag."
-        ],
- question3: "What <b>should</b> Michael do?",
-        options3: [
-            "Apologize to the teacher and miss the trip.",
-            "Ask his parents to call the teacher and sort it out.",
-            "Try to convince the teacher to forgive him and let him go to the trip.",
-            "Blame his parents for not signing the form and putting it in his bag."
-        ]
-
-    },
-    {
-        story: "During a baseball game, Josh hits the ball very hard, breaking a car window near the field.",
-        question1: "How likely is it that Josh feels guilty about breaking the car window?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize and offer to pay for the damage.",
-            "Explain it was an accident.",
-            "Blame the game and say it’s not his fault.",
-            "Wait for someone else to report the incident."
-        ],
-        question3: "What <b>should</b> Josh do?",
-        options3: [
-            "Apologize and offer to pay for the damage.",
-            "Explain it was an accident.",
-            "Blame the game and say it’s not his fault.",
-            "Wait for someone else to report the incident."
-        ]
-    },
-    {
-        story: "Lisa accidentally posts a funny but unflattering photo of her friend Mia online. When Mia sees it, she gets very upset.",
-        question1: "How likely is it that Lisa feels guilty about posting the photo?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Delete the photo and say nothing.",
-            "Apologize to Mia and delete it immediately.",
-           "Leave it up and hope Mia will forget about it at some point.",
-            "Tell Mia it was a harmless joke."
-        ],
-        question3: "What <b>should</b> Lisa do?",
-        options3: [
-            "Delete the photo and say nothing.",
-            "Apologize to Mia and delete it immediately.",
-            "Leave it up and hope Mia will forget about it at some point.",
-            "Tell Mia it was a harmless joke."
-        ]
-    },
-    {
-        story: "Ethan spends his savings on a video game instead of saving for a bike he’s wanted for months.",
-        question1: "How likely is it that Ethan feels guilty about his decision?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Save more money each week.",
-            "Ask his parents to buy the bike for him.",
-            "Give up on buying a bike.",
-            "Borrow money from a friend for the bike."
-        ],
- question3: "What <b>should</b> Ethan do?",
-        options3: [
-            "Save more money each week.",
-            "Ask his parents to buy the bike for him.",
-            "Give up on buying a bike.",
-            "Borrow money from a friend for the bike."
-        ]
-
-    },
-    {
-        story: "During a sleepover, Emily and her friends eat cookies labeled ‘’Mom’s Treats.’’ They promise to keep it a secret.",
-        question1: "How likely is it that Emily feels guilty about eating the cookies?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize to her mom the next day.",
-            "Keep the promise and not say anything.",
-            "Suggest the group admit to eating the cookies.",
-            "Blame someone else if asked."
-        ],
-question3: "What <b>should</b> Emily do?",
-        options3: [
-            "Apologize to her mom the next day.",
-            "Keep the promise and not say anything.",
-            "Suggest the group admit to eating the cookies.",
-            "Blame someone else if asked."
-        ]
-
-    },
-    {
-        story: "During a group presentation, Adam hesitates to share his cultural tradition, fearing his classmates might laugh at him, so he pretends to be sick and did not participate.",
-        question1: "How likely is it that Adam feels guilty about not sharing his tradition?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Share his tradition and ignore any reactions.",
-            "Wait for a different time to share.",
-            "Ask a classmate to present for him.",
-            "Skip the presentation altogether."
-        ],
-question3: "What <b>should</b> Adam do?",
-        options3: [
-            "Share his tradition and ignore any reactions.",
-            "Wait for a different time to share.",
-            "Ask a classmate to present for him.",
-            "Skip the presentation altogether."
- ]
-    },
-    {
-        story: "During cleanup time, Mia forgets to clean her desk. The teacher points it out, but Mia says, 'It’s not that messy.'",
-        question1: "How likely is it that Mia feels guilty for not cleaning her desk?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Clean her desk immediately.",
-            "Explain why she doesn’t think it’s messy.",
-            "Ask a friend to clean it for her.",
-            "Ignore the teacher’s comment."
-        ],
-question3: "What <b>should</b> Mia do?",
-        options3: [
-            "Clean her desk immediately.",
-            "Explain why she doesn’t think it’s messy.",
-            "Ask a friend to clean it for her.",
-            "Ignore the teacher’s comment."
-        ]
-
-    },
-    {
-        story: "Taylor finds a $20 bill under a park bench. No one is around, and he considers keeping it.",
-        question1: "How likely is it that Taylor feels guilty for considering keeping the money?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Keep the money since no one is around.",
-            "Look for someone who might have lost it.",
-            "Leave it where he found it.",
-            "Donate it to a charity box."
-        ],
-question3: "What <b>should</b> Taylor do?",
-        options3: [
-            "Keep the money since no one is around.",
-            "Look for someone who might have lost it.",
-            "Leave it where he found it.",
-            "Donate it to a charity box."
-        ]
-    },
-    {
-        story: "During dinner, Alex makes a joke about his cousin’s accent. His cousin looks upset but doesn’t say anything.",
-        question1: "How likely is it that Alex feels guilty for making a joke about his cousin’s accent?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize privately to his cousin.",
-            "Say the joke wasn’t serious.",
-            "Avoid making jokes in the future.",
-            "Ignore his cousin’s reaction."
-        ],
-question3: "What <b>should</b> Alex do?",
-        options3: [
-            "Apologize privately to his cousin.",
-            "Say the joke wasn’t serious.",
-            "Avoid making jokes in the future.",
-            "Ignore his cousin’s reaction."
-        ]
-    },
-           {
-        story: "While hanging out in the backyard, Dan and his friends accidentally break the handle of the neighbor’s gate. They decide not to tell anyone.",
-        question1: "How likely is it that Dan feels guilty for breaking the handle?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Tell the neighbor and offer to fix it.",
-            "Leave the scene and hope no one finds out.",
-            "Blame the damage on the wind.",
-            "Blame his friends for breaking the handle."
-        ],
- question3: "What <b>should</b> Dan do?",
-        options3: [
-            "Tell the neighbor and offer to fix it.",
-            "Leave the scene and hope no one finds out.",
-            "Blame the damage on the wind.",
-            "Blame his friends for breaking the handle."
-        ]
-
-    },
-    {
-        story: "During a school trip to a museum, Elliot finds a souvenir pin on the floor of the gift shop. No one is looking, and she decides to keep it.",
-        question1: "How likely is it that Elliot feels guilty about keeping the pin?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Keep the pin as a free souvenir.",
-            "Put it back on the floor where she found it.",
-            "Give it to the shop clerk in case someone asks.",
-            "Try to find the person who dropped it."
-        ],
-            question3: "What <b>should</b> Elliot do?",
-        options3: [
-            "Keep the pin as a free souvenir.",
-            "Put it back on the floor where she found it.",
-            "Give it to the shop clerk in case someone asks.",
-            "Try to find the person who dropped it."
-        ]
-        
-    },
-{
-        story: "While setting up decorations for a party, Logan insists he can hang a large banner by himself. He accidentally tears it while trying.",
-        question1: "How likely is it that Logan feels guilty about tearing the banner?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize to the group and ask for help.",
-            "Fix the banner quickly and say nothing.",
-            "Explain that the banner was poorly made.",
-            "Suggest they skip using the banner altogether."
-        ],
-  question3: "What <b>should</b> Logan do?",
-        options3: [
-            "Apologize to the group and ask for help.",
-            "Fix the banner quickly and say nothing.",
-            "Explain that the banner was poorly made.",
-            "Suggest they skip using the banner altogether."
-        ]
-
-    },
-    {
-        story: "During a talent show, Emma forgets part of her dance routine. She improvises a new move and finishes her performance, taking up some of her friends' show time.",
-question1: "How likely is it that Emma feels guilty about taking up some of her friends' show time?",
-sliderLabels: ["Not likely", "Very likely"],
-question2: "What do you think most students in your grade would do?",
-options: [
-    "Tell everyone that this was the original plan",
-    "Apologize to the audience and leave the stage",
-    "Apologize to the audience and start the routine over from the beginning",
-    "Blame her teacher for not training her enough"
-],
-question3: "What <b>should</b> Emma do?",
-options3: [
-    "Tell everyone that this was the original plan",
-    "Apologize to the audience and leave the stage",
-    "Apologize to the audience and start the routine over from the beginning",
-    "Blame her teacher for not training her enough"
-]
-
-    },
-    {
-        story: "During a group hike, Noam accidentally steps on another hiker’s water bottle and cracks it. The owner didn’t notice.",
-        question1: "How likely is it that Noam feels guilty about damaging the bottle?",
-        sliderLabels: ["Not likely", "Very likely"],
-        question2: "What do you think most students in your grade would do?",
-        options: [
-            "Apologize to the hiker and offer to replace the bottle.",
-            "Say nothing and keep walking.",
-            "Blame the crowded trail for the accident.",
-            "Offer to share her water for the rest of the hike."
-        ],
-  question3: "What <b>should</b> Noam do?",
-        options3: [
-            "Apologize to the hiker and offer to replace the bottle.",
-            "Say nothing and keep walking.",
-            "Blame the crowded trail for the accident.",
-            "Offer to share her water for the rest of the hike."
-        ]
-
-    }     
-
-
-        ];
-
-        let currentQuestionIndex = 0;
+<script>
 const API_KEY = "$2a$10$YxiEwNJ1cRflkVspzTTu7.PUYSlzD01BRh1DFHGuaaJU9EJO1iH66";
 const BIN_ID = "676119d6e41b4d34e466b66d";
 const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-        function loadQuestion(index) {
-            const question = questions[index];
-            const container = document.getElementById("question-container");
-            container.innerHTML = `
-                <div class="question-block">
-                    <h2>${question.story}</h2>
-                    <p><strong>1:</strong> ${question.question1}</p>
-                    <input type="range" min="1" max="10" value="5" class="slider">
-                    <div class="slider-labels">
-                        <span>${question.sliderLabels[0]}</span>
-                        <span>${question.sliderLabels[1]}</span>
-                    </div>
-                    <br><br>
-                    <p><strong>2:</strong> ${question.question2}</p>
-                    <div class="answers">
-                        ${question.options.map(option => `<button class="answer-button">${option}</button>`).join("")}
-                    </div>
-                    <br>
-                    <p><strong>3:</strong> ${question.question3}</p>
-                    <div class="answers">
-                        ${question.options3.map(option => `<button class="answer-button">${option}</button>`).join("")}
-                    </div>
-                </div>`;
-            
+let currentQuestionIndex = 0;
+
+// Function to save answers to JSONBin
 async function saveAnswerToJSONBin(newData) {
     try {
         // Step 1: Get existing data
@@ -629,44 +246,56 @@ async function saveAnswerToJSONBin(newData) {
     }
 }
 
+// Function to load the question
+function loadQuestion(index) {
+    const question = questions[index];
+    const container = document.getElementById("question-container");
+    container.innerHTML = `
+        <div class="question-block">
+            <h2>${question.story}</h2>
+            <p><strong>1:</strong> ${question.question1}</p>
+            <input type="range" min="1" max="10" value="5" class="slider">
+            <div class="slider-labels">
+                <span>${question.sliderLabels[0]}</span>
+                <span>${question.sliderLabels[1]}</span>
+            </div>
+            <br><br>
+            <p><strong>2:</strong> ${question.question2}</p>
+            <div class="answers">
+                ${question.options.map(option => `<button class="answer-button">${option}</button>`).join("")}
+            </div>
+            <br>
+            <p><strong>3:</strong> ${question.question3}</p>
+            <div class="answers">
+                ${question.options3.map(option => `<button class="answer-button">${option}</button>`).join("")}
+            </div>
+        </div>`;
 
+    // Update Progress Bar
+    const progressBar = document.getElementById("progress-bar");
+    const progress = ((index + 1) / questions.length) * 100;
+    progressBar.style.width = `${progress}%`;
 
-// Display Question Number
-const questionContainer = document.getElementById("question-container");
-const questionNumberHTML = `
-    <div class="question-number">
-        Story ${index + 1} of ${questions.length}
-    </div>
-`;
+    // Update Question Number
+    const questionContainer = document.getElementById("question-container");
+    questionContainer.insertAdjacentHTML('afterbegin', `
+        <div class="question-number">
+            Story ${index + 1} of ${questions.length}
+        </div>
+    `);
+}
 
-                        // Update Progress Bar
-const progressBar = document.getElementById("progress-bar");
-const progress = ((index + 1) / questions.length) * 100;
-progressBar.style.width = `${progress}%`;
-            
-questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
-
-        
-        
-        }
-
+// Event listener to mark an answer as selected
 document.getElementById("question-container").addEventListener("click", function (event) {
-    // Check if the clicked element is a button inside .answers
     if (event.target.classList.contains("answer-button")) {
         const answerGroup = event.target.closest(".answers");
-
-        // Remove 'selected' class from all buttons in the same group
         answerGroup.querySelectorAll(".answer-button").forEach(btn => btn.classList.remove("selected"));
-
-        // Add 'selected' class to the clicked button
         event.target.classList.add("selected");
     }
 });
 
-
-
+// Submit button event handler
 document.getElementById("submit-button").addEventListener("click", function () {
-    // Gather slider and selected answers
     const sliderValue = document.querySelector(".slider").value;
     const selectedAnswers = document.querySelectorAll(".answer-button.selected");
     const answer1 = selectedAnswers[0]?.innerText || "Not Answered";
@@ -687,27 +316,44 @@ document.getElementById("submit-button").addEventListener("click", function () {
 
     console.log("Sending data:", responseData);
 
-    // Call JSONBin saving asynchronously without blocking the flow
+    // Save to JSONBin
     saveAnswerToJSONBin(responseData).catch(error => {
         console.error("Error saving data:", error);
     });
 
-    // Load the next question or finish
+    // Load next question or finish
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
     } else {
-        // Hide questionnaire and show thank you page
         document.getElementById("questionnaire-page").style.display = "none";
         document.getElementById("thank-you-page").style.display = "block";
         document.getElementById("thank-you-name").innerText = fullName || "Participant";
     }
 });
 
+// Start Button Logic
+document.getElementById("start-button").addEventListener("click", function () {
+    const fullName = document.getElementById("full-name").value.trim();
+    const className = document.getElementById("class-name").value.trim();
 
+    if (fullName === "" || className === "") {
+        alert("Please fill out both your Full Name and Class before starting.");
+        return;
+    }
 
+    localStorage.setItem("fullName", fullName);
+    localStorage.setItem("className", className);
 
-        loadQuestion(currentQuestionIndex);
-    </script>
+    document.getElementById("intro-page").style.display = "none";
+    document.getElementById("questionnaire-page").style.display = "block";
+
+    loadQuestion(currentQuestionIndex);
+});
+
+// Initial Question Load
+loadQuestion(currentQuestionIndex);
+</script>
+
 </body>
 </html>
