@@ -568,6 +568,9 @@ options3: [
         ];
 
         let currentQuestionIndex = 0;
+const API_KEY = "$2a$10$YxiEwNJ1cRflkVspzTTu7.PUYSlzD01BRh1DFHGuaaJU9EJO1iH66";
+const BIN_ID = "676119d6e41b4d34e466b66d";
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
         function loadQuestion(index) {
             const question = questions[index];
@@ -593,6 +596,38 @@ options3: [
                     </div>
                 </div>`;
             
+async function saveAnswerToJSONBin(newData) {
+    try {
+        // Step 1: Get existing data
+        const getResponse = await fetch(BIN_URL, {
+            method: "GET",
+            headers: { "X-Master-Key": API_KEY }
+        });
+
+        if (!getResponse.ok) throw new Error("Failed to fetch existing data");
+
+        const existingData = await getResponse.json();
+        const responses = existingData.record.responses || [];
+
+        // Step 2: Append the new response
+        responses.push(newData);
+
+        // Step 3: Send updated data back to JSONBin
+        const updateResponse = await fetch(BIN_URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": API_KEY
+            },
+            body: JSON.stringify({ responses })
+        });
+
+        if (!updateResponse.ok) throw new Error("Failed to update data");
+        console.log("Data saved successfully!");
+    } catch (error) {
+        console.error("Error saving data:", error.message);
+    }
+}
 
 
 
@@ -630,27 +665,40 @@ document.getElementById("question-container").addEventListener("click", function
 
 
 
-document.getElementById("submit-button").addEventListener("click", function () {
-    const selectedAnswer = document.querySelector(".answer-button.selected");
-    if (!selectedAnswer) {
-        alert("Please select an answer before proceeding.");
-        return;
-    }
+document.getElementById("submit-button").addEventListener("click", async function () {
+    const sliderValue = document.querySelector(".slider").value;
+    const selectedAnswers = document.querySelectorAll(".answer-button.selected");
+    const answer1 = selectedAnswers[0]?.innerText || "Not Answered";
+    const answer2 = selectedAnswers[1]?.innerText || "Not Answered";
+    const fullName = localStorage.getItem("fullName");
+    const className = localStorage.getItem("className");
+    const timestamp = new Date().toISOString();
+
+    const responseData = {
+        fullName,
+        className,
+        story: questions[currentQuestionIndex].story,
+        sliderValue,
+        answer1,
+        answer2,
+        timestamp
+    };
+
+    console.log("Sending data:", responseData);
+
+    await saveAnswerToJSONBin(responseData);
+
+    // Load the next question or finish
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
     } else {
-        // Hide the questionnaire page
         document.getElementById("questionnaire-page").style.display = "none";
-
-        // Show the thank you page
         document.getElementById("thank-you-page").style.display = "block";
-
-        // Display user's name
-        const fullName = localStorage.getItem("fullName");
         document.getElementById("thank-you-name").innerText = fullName || "Participant";
     }
 });
+
 
 
         loadQuestion(currentQuestionIndex);
