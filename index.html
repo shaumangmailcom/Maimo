@@ -127,10 +127,31 @@
     margin-bottom: 30px;
     color: #033C5A;
 }
+.container {
+    display: none; /* Hide the questionnaire until Start is clicked */
+}
 
     </style>
 </head>
 <body>
+
+    <!-- Intro Page -->
+<div id="intro-page" class="container">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <h1>Welcome to the Questionnaire</h1>
+    <p>
+        In front of you are short stories describing different situations.<br>
+        We ask that you <strong>think carefully</strong> about each one and choose the response that seems most appropriate to you.<br><br>
+        <strong>There are no right or wrong answers.</strong> <br>
+        Please answer according to your best judgment. If more than one answer feels right, <br>
+        choose the one you feel most strongly about.
+    </p>
+    <button id="start-button">Start</button>
+</div>
+
+    
     <div class="container">
         <div class="logo">
             <img src="logo.png" alt="Logo">
@@ -146,6 +167,13 @@
     </div>
 
     <script>
+
+        document.getElementById("start-button").addEventListener("click", function () {
+    document.getElementById("intro-page").style.display = "none"; // Hide the intro page
+    document.querySelector(".container").style.display = "block"; // Show the main questionnaire
+    loadQuestion(currentQuestionIndex); // Load the first question
+});
+
         const questions = [
           {
         story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He is taking it and drinking it, thinking no one will notice.",
