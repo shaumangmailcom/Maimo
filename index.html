@@ -162,6 +162,19 @@
     <button id="submit-button">Next question</button>
 </div>
 
+    <!-- Thank You Page -->
+<div id="thank-you-page" class="container" style="display: none;">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <h1>Thank You!</h1>
+    <p>
+        Thank you for taking the time to complete this questionnaire.<br>
+        Your responses are valuable and appreciated!
+    </p>
+</div>
+
+
     <script>
 
 document.getElementById("start-button").addEventListener("click", function () {
@@ -577,20 +590,24 @@ document.getElementById("question-container").addEventListener("click", function
 
 
 
-        document.getElementById("submit-button").addEventListener("click", function () {
-            const selectedAnswer = document.querySelector(".answer-button.selected");
-            if (!selectedAnswer) {
-                alert("Please select an answer before proceeding.");
-                return;
-            }
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                loadQuestion(currentQuestionIndex);
-            } else {
-                alert("Thank you for completing the questionnaire!");
-                this.disabled = true;
-            }
-        });
+document.getElementById("submit-button").addEventListener("click", function () {
+    const selectedAnswer = document.querySelector(".answer-button.selected");
+    if (!selectedAnswer) {
+        alert("Please select an answer before proceeding.");
+        return;
+    }
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion(currentQuestionIndex);
+    } else {
+        // Hide the questionnaire page
+        document.getElementById("questionnaire-page").style.display = "none";
+
+        // Show the thank you page
+        document.getElementById("thank-you-page").style.display = "block";
+    }
+});
+
 
         loadQuestion(currentQuestionIndex);
     </script>
