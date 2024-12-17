@@ -665,7 +665,8 @@ document.getElementById("question-container").addEventListener("click", function
 
 
 
-document.getElementById("submit-button").addEventListener("click", async function () {
+document.getElementById("submit-button").addEventListener("click", function () {
+    // Gather slider and selected answers
     const sliderValue = document.querySelector(".slider").value;
     const selectedAnswers = document.querySelectorAll(".answer-button.selected");
     const answer1 = selectedAnswers[0]?.innerText || "Not Answered";
@@ -686,18 +687,23 @@ document.getElementById("submit-button").addEventListener("click", async functio
 
     console.log("Sending data:", responseData);
 
-    await saveAnswerToJSONBin(responseData);
+    // Call JSONBin saving asynchronously without blocking the flow
+    saveAnswerToJSONBin(responseData).catch(error => {
+        console.error("Error saving data:", error);
+    });
 
     // Load the next question or finish
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
     } else {
+        // Hide questionnaire and show thank you page
         document.getElementById("questionnaire-page").style.display = "none";
         document.getElementById("thank-you-page").style.display = "block";
         document.getElementById("thank-you-name").innerText = fullName || "Participant";
     }
 });
+
 
 
 
