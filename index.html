@@ -212,10 +212,52 @@ const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
 let currentQuestionIndex = 0;
 
+// Questions Array (Add your questions here)
+const questions = [
+    {
+        story: "During a picnic, Jake picks up a Coca-Cola bottle left on a bench. He is taking it and drinking it, thinking no one will notice.",
+        question1: "How likely is it that Jake feels guilty about taking the Coke?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students in your grade would do?",
+        options: [
+            "Drink it and throw it away afterward.",
+            "Look around for the owner before deciding.",
+            "Leave it where he found it.",
+            "Take it home as a free item."
+        ],
+        question3: "What <b>should</b> Jake do?",
+        options3: [
+            "Drink it and throw it away afterward.",
+            "Look around for the owner before deciding.",
+            "Leave it where he found it.",
+            "Take it home as a free item."
+        ]
+    },
+    {
+        story: "Sarah’s kite got stuck in the neighbor's tree. Sarah climbed the neighbor’s tree to get the kite. A big branch broke, but Sarah managed to hold onto another branch and didn’t fall.",
+        question1: "How likely is it that Sarah feels guilty about breaking the branch?",
+        sliderLabels: ["Not likely", "Very likely"],
+        question2: "What do you think most students in your grade would do?",
+        options: [
+            "Apologize to the neighbor for climbing the tree.",
+            "Try to explain why she climbed it.",
+            "Ignore the situation and hope no one notices.",
+            "Offer to help clean up the broken branch."
+        ],
+        question3: "What <b>should</b> Sarah do?",
+        options3: [
+            "Apologize to the neighbor for climbing the tree.",
+            "Try to explain why she climbed it.",
+            "Ignore the situation and hope no one notices.",
+            "Offer to help clean up the broken branch."
+        ]
+    }
+    // Add more questions here...
+];
+
 // Function to save answers to JSONBin
 async function saveAnswerToJSONBin(newData) {
     try {
-        // Step 1: Get existing data
         const getResponse = await fetch(BIN_URL, {
             method: "GET",
             headers: { "X-Master-Key": API_KEY }
@@ -226,10 +268,8 @@ async function saveAnswerToJSONBin(newData) {
         const existingData = await getResponse.json();
         const responses = existingData.record.responses || [];
 
-        // Step 2: Append the new response
         responses.push(newData);
 
-        // Step 3: Send updated data back to JSONBin
         const updateResponse = await fetch(BIN_URL, {
             method: "PUT",
             headers: {
@@ -276,9 +316,7 @@ function loadQuestion(index) {
     const progress = ((index + 1) / questions.length) * 100;
     progressBar.style.width = `${progress}%`;
 
-    // Update Question Number
-    const questionContainer = document.getElementById("question-container");
-    questionContainer.insertAdjacentHTML('afterbegin', `
+    document.getElementById("question-container").insertAdjacentHTML('afterbegin', `
         <div class="question-number">
             Story ${index + 1} of ${questions.length}
         </div>
@@ -314,14 +352,10 @@ document.getElementById("submit-button").addEventListener("click", function () {
         timestamp
     };
 
-    console.log("Sending data:", responseData);
-
-    // Save to JSONBin
     saveAnswerToJSONBin(responseData).catch(error => {
         console.error("Error saving data:", error);
     });
 
-    // Load next question or finish
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
@@ -351,8 +385,6 @@ document.getElementById("start-button").addEventListener("click", function () {
     loadQuestion(currentQuestionIndex);
 });
 
-// Initial Question Load
-loadQuestion(currentQuestionIndex);
 </script>
 
 </body>
