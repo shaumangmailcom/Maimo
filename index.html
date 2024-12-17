@@ -187,7 +187,7 @@
 
     },
     {
-        story: "Jamie finds a Lakers branded pencil on the floor in her classroom and takes it, thinking no one would miss it. Later, one of her classmates mentioned they lost their Lakers branded pencil.",
+        story: "Jamie finds a Lakers branded pencil on the fstoryloor in her classroom and takes it, thinking no one would miss it. Later, one of her classmates mentioned they lost their Lakers branded pencil.",
         question1: "How likely is it that Jamie feels guilty about taking the Lakers pencil?",
         sliderLabels: ["Not likely", "Very likely"],
         question2: "What do you think most students in your grade would do?",
@@ -511,10 +511,7 @@ options3: [
                 </div>`;
             
 
-            // Update Progress Bar
-const progressBar = document.getElementById("progress-bar");
-const progress = ((index + 1) / questions.length) * 100;
-progressBar.style.width = `${progress}%`;
+
 
 // Display Question Number
 const questionContainer = document.getElementById("question-container");
@@ -523,6 +520,12 @@ const questionNumberHTML = `
         Story ${index + 1} of ${questions.length}
     </div>
 `;
+
+                        // Update Progress Bar
+const progressBar = document.getElementById("progress-bar");
+const progress = ((index + 1) / questions.length) * 100;
+progressBar.style.width = `${progress}%`;
+            
 questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
 
         
