@@ -507,7 +507,7 @@ options3: [
                         ${question.options3.map(option => `<button class="answer-button">${option}</button>`).join("")}
                     </div>
                 </div>`;
-            addButtonListeners();
+            
 
             // Update Progress Bar
 const progressBar = document.getElementById("progress-bar");
@@ -527,19 +527,18 @@ questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
         
         }
 
-function addButtonListeners() {
-    // Add event listeners to each answers group independently
-    document.querySelectorAll(".answers").forEach(answerGroup => {
-        answerGroup.querySelectorAll(".answer-button").forEach(button => {
-            button.addEventListener("click", function () {
-                // Remove 'selected' only within this specific group
-                answerGroup.querySelectorAll(".answer-button").forEach(btn => btn.classList.remove("selected"));
-                // Add 'selected' to the clicked button
-                this.classList.add("selected");
-            });
-        });
-    });
-}
+document.getElementById("question-container").addEventListener("click", function (event) {
+    // Check if the clicked element is a button inside .answers
+    if (event.target.classList.contains("answer-button")) {
+        const answerGroup = event.target.closest(".answers");
+
+        // Remove 'selected' class from all buttons in the same group
+        answerGroup.querySelectorAll(".answer-button").forEach(btn => btn.classList.remove("selected"));
+
+        // Add 'selected' class to the clicked button
+        event.target.classList.add("selected");
+    }
+});
 
 
 
