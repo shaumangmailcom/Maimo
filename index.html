@@ -528,18 +528,19 @@ questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
         }
 
 function addButtonListeners() {
-    // Select all groups of answer buttons
+    // Add event listeners to each answers group independently
     document.querySelectorAll(".answers").forEach(answerGroup => {
-        const buttons = answerGroup.querySelectorAll(".answer-button");
-        buttons.forEach(button => {
+        answerGroup.querySelectorAll(".answer-button").forEach(button => {
             button.addEventListener("click", function () {
-                // Remove 'selected' only within the current group
-                buttons.forEach(btn => btn.classList.remove("selected"));
+                // Remove 'selected' only within this specific group
+                answerGroup.querySelectorAll(".answer-button").forEach(btn => btn.classList.remove("selected"));
+                // Add 'selected' to the clicked button
                 this.classList.add("selected");
             });
         });
     });
 }
+
 
 
         document.getElementById("submit-button").addEventListener("click", function () {
