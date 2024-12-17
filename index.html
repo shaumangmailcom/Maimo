@@ -630,10 +630,19 @@ document.getElementById("question-container").addEventListener("click", function
 
 // Submit button event handler
 document.getElementById("submit-button").addEventListener("click", function () {
+    // Gather slider and selected answers
     const sliderValue = document.querySelector(".slider").value;
     const selectedAnswers = document.querySelectorAll(".answer-button.selected");
-    const answer1 = selectedAnswers[0]?.innerText || "Not Answered";
-    const answer2 = selectedAnswers[1]?.innerText || "Not Answered";
+    const answer1 = selectedAnswers[0]?.innerText || null;
+    const answer2 = selectedAnswers[1]?.innerText || null;
+
+    // Validation: Ensure both answers and slider are provided
+    if (!sliderValue || !answer1 || !answer2) {
+        alert("Please answer all parts of the question before proceeding.");
+        return;
+    }
+
+    // Collect user data
     const fullName = localStorage.getItem("fullName");
     const className = localStorage.getItem("className");
     const timestamp = new Date().toISOString();
@@ -648,10 +657,14 @@ document.getElementById("submit-button").addEventListener("click", function () {
         timestamp
     };
 
+    console.log("Sending data:", responseData);
+
+    // Save to JSONBin
     saveAnswerToJSONBin(responseData).catch(error => {
         console.error("Error saving data:", error);
     });
 
+    // Load next question or finish
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
@@ -661,6 +674,7 @@ document.getElementById("submit-button").addEventListener("click", function () {
         document.getElementById("thank-you-name").innerText = fullName || "Participant";
     }
 });
+
 
 // Start Button Logic
 document.getElementById("start-button").addEventListener("click", function () {
