@@ -527,14 +527,20 @@ questionContainer.innerHTML = questionNumberHTML + questionContainer.innerHTML;
         
         }
 
-        function addButtonListeners() {
-            document.querySelectorAll(".answer-button").forEach(button => {
-                button.addEventListener("click", function () {
-                    document.querySelectorAll(".answer-button").forEach(btn => btn.classList.remove("selected"));
-                    this.classList.add("selected");
-                });
+function addButtonListeners() {
+    // Select all groups of answer buttons
+    document.querySelectorAll(".answers").forEach(answerGroup => {
+        const buttons = answerGroup.querySelectorAll(".answer-button");
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                // Remove 'selected' only within the current group
+                buttons.forEach(btn => btn.classList.remove("selected"));
+                this.classList.add("selected");
             });
-        }
+        });
+    });
+}
+
 
         document.getElementById("submit-button").addEventListener("click", function () {
             const selectedAnswer = document.querySelector(".answer-button.selected");
