@@ -498,10 +498,12 @@ options3: [
                         <span>${question.sliderLabels[0]}</span>
                         <span>${question.sliderLabels[1]}</span>
                     </div>
+                    <br><br>
                     <p><strong>2:</strong> ${question.question2}</p>
                     <div class="answers">
                         ${question.options.map(option => `<button class="answer-button">${option}</button>`).join("")}
                     </div>
+                    <br>
                     <p><strong>3:</strong> ${question.question3}</p>
                     <div class="answers">
                         ${question.options3.map(option => `<button class="answer-button">${option}</button>`).join("")}
