@@ -133,7 +133,7 @@
 </head>
 <body>
 
-   <!-- Intro Page -->
+  <!-- Intro Page -->
 <div id="intro-page" class="container">
     <div class="logo">
         <img src="logo.png" alt="Logo">
@@ -146,6 +146,13 @@
         Please answer according to your best judgment. If more than one answer feels right, <br>
         choose the one you feel most strongly about.
     </p>
+    <!-- New Input Fields -->
+    <label for="full-name">Full Name:</label><br>
+    <input type="text" id="full-name" placeholder="Enter your full name" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+    
+    <label for="class-name">Class:</label><br>
+    <input type="text" id="class-name" placeholder="Enter your class" required style="width: 100%; padding: 8px; margin-bottom: 20px;"><br>
+
     <button id="start-button">Start</button>
 </div>
 
@@ -168,21 +175,33 @@
         <img src="logo.png" alt="Logo">
     </div>
     <h1>Thank You!</h1>
-    <p>
-        Thank you for taking the time to complete this questionnaire.<br>
-        Your responses are valuable and appreciated!
-    </p>
+<p>
+    Thank you, <span id="thank-you-name">Participant</span>, for taking the time to complete this questionnaire.<br>
+    Your responses are valuable and appreciated!
+</p>
 </div>
 
 
     <script>
 
 document.getElementById("start-button").addEventListener("click", function () {
+    const fullName = document.getElementById("full-name").value.trim();
+    const className = document.getElementById("class-name").value.trim();
+
+    if (fullName === "" || className === "") {
+        alert("Please fill out both your Full Name and Class before starting.");
+        return;
+    }
+
     // Hide the intro page
     document.getElementById("intro-page").style.display = "none";
 
     // Show the main questionnaire page
     document.getElementById("questionnaire-page").style.display = "block";
+
+    // Store the name and class if needed later
+    localStorage.setItem("fullName", fullName);
+    localStorage.setItem("className", className);
 
     // Load the first question
     loadQuestion(currentQuestionIndex);
@@ -605,6 +624,10 @@ document.getElementById("submit-button").addEventListener("click", function () {
 
         // Show the thank you page
         document.getElementById("thank-you-page").style.display = "block";
+
+        // Display user's name
+        const fullName = localStorage.getItem("fullName");
+        document.getElementById("thank-you-name").innerText = fullName || "Participant";
     }
 });
 
